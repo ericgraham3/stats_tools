@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'stats_tools/index.html')
 
 
-def random_sample_view(request):
+def random_sample(request):
     if request.method == 'POST':
         form = RandomSampleForm(request.POST)
         if form.is_valid():
@@ -25,10 +25,10 @@ def random_sample_view(request):
             results = random_sample_instance.random_table(rows, 1)
 
             # Pass the results to the template
-            return render(request, 'results_template.html', {'results': results})
+            return render(request, 'stats_tools/random_sample_results.html', {'results': results})
 
     else:
         # Display the form for GET requests
         form = RandomSampleForm()
 
-    return render(request, 'random_sample_template.html', {'form': form})
+    return render(request, 'stats_tools/random_sample.html', {'form': form})

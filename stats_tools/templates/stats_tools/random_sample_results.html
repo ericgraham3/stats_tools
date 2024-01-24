@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Random Sample Form</h1>
+
+<h2>Random Sample Results</h2>{% block content %}
+<h2>Random Sample Results</h2>
+<p>Here are your random numbers:</p>
+{% if results %}
+     <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+     </ul>
+{% else %}
+    <p>No results available.</p>
+{% endif %}
+
+{% endblock %}
+
+</body>
+</html>

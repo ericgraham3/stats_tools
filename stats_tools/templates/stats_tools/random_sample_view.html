@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Random Sample Form</h1>
+
+    <h2>Random Sample Form</h2>
+    <form action="{% url 'stats_tools:random_sample_view' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}
+</body>
+</html>

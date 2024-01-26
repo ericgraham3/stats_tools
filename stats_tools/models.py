@@ -8,4 +8,5 @@ class RandomSample(models.Model):
     rows = models.IntegerField(max_length=2000)
     columns = models.IntegerField(max_length=10)
     date_requested = models.DateTimeField(auto_now_add=True)
+    export = models.BooleanField(default=False)
 

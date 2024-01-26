@@ -1,4 +1,8 @@
+import csv
+
 from django.shortcuts import render
+from django.http import HttpResponse
+import pandas as pd
 
 from .forms import RandomSampleForm
 from random_sample import RandomSample
@@ -18,15 +22,22 @@ def random_sample(request):
             max_value = form.cleaned_data['max_value']
             rows = form.cleaned_data['rows']
             columns = form.cleaned_data['columns']
+            export_csv = form.cleaned_data['export']
 
             # Create RandomSample object
             random_sample_instance = RandomSample(min_value, max_value)
 
             # Call the method to get results
-            results = random_sample_instance.random_table(rows, columns)
+            results = random_sample_instance.random_table(rows, columns, export_csv)
 
-            # Pass the results to the template
-            return render(request, 'stats_tools/random_sample_results.html', {'results': results})
+            if export_csv:
+                # Return the CSV as a response
+                response = HttpResponse(results, content_type='text/csv')
+                response['Content-Disposition'] = 'attachment; filename=table.csv"'
+                return response
+            else:
+                # Pass the results to the template
+                return render(request, 'stats_tools/random_sample_results.html', {'results': results})
 
     else:
         # Display the form for GET requests

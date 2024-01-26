@@ -6,11 +6,12 @@ from .models import RandomSample
 class RandomSampleForm(forms.ModelForm):
     class Meta:
         model = RandomSample
-        fields = ['min_value', 'max_value', 'rows', 'columns']
+        fields = ['min_value', 'max_value', 'rows', 'columns', 'export']
         labels = {'min_value': 'Minimum Value',
                   'max_value': 'Maximum Value',
                   'rows': 'Number of results to return:',
-                  'columns': 'Number of columns to return'}
+                  'columns': 'Number of columns to return',
+                  'export': 'Export as CSV?'}
 
     def __init__(self, *args, **kwargs):
         super(RandomSampleForm, self).__init__(*args, **kwargs)

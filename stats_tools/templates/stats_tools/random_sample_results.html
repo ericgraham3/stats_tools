@@ -13,12 +13,8 @@
 
 <h2>Random Sample Results</h2>
 <p>Here are your random numbers:</p>
-{% if results %}
-     <ul>
-            {% for result in results %}
-                <li>{{ result }}</li>
-            {% endfor %}
-     </ul>
+{% if results %}<textarea>{% for result in results %}{{ result }}
+{% endfor %}</textarea>
 {% else %}
     <p>No results available.</p>
 {% endif %}

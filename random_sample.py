@@ -14,7 +14,10 @@ class RandomSample:
         with random numbers between the min_value and max_value of the RandomSample object.
         If export flag is True, the table will be exported to CSV.
         """
-        random_list = [[rm.randint(self.min_value, self.max_value) for x in range(columns)] for y in range(rows)]
+        if columns == 1:
+            random_list = [rm.randint(self.min_value, self.max_value) for x in range(rows)]
+        else:
+            random_list = [[rm.randint(self.min_value, self.max_value) for x in range(columns)] for y in range(rows)]
         if export is True:
             self._export(random_list)
         return random_list

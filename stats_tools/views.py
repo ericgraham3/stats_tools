@@ -3,8 +3,9 @@ import csv
 from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
+from django.template.context_processors import request
 
-from .forms import RandomSampleForm
+from .forms import RandomSampleForm, UploadCsvForm
 from random_sample import RandomSample
 
 
@@ -44,3 +45,13 @@ def random_sample(request):
         form = RandomSampleForm()
 
     return render(request, 'stats_tools/random_sample.html', {'form': form})
+
+
+def upload_csv(request):
+    if request.method == 'POST':
+        form = UploadCsvForm(request.POST, request.FILES)
+        if form.is_valid():
+            csv_file = request.files['csv_file']
+            dataframe = pd.read_csv(csv_file)
+    else:
+        form = UploadCsvForm()

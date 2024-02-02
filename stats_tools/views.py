@@ -55,3 +55,5 @@ def upload_csv(request):
             dataframe = pd.read_csv(csv_file)
     else:
         form = UploadCsvForm()
+
+    return render(request, 'stats_tools/upload_csv.html', {'form': form})

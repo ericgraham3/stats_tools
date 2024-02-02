@@ -19,5 +19,6 @@ class RandomSampleForm(forms.ModelForm):
         # Set the default value for 'columns' field to 1
         self.fields['columns'].initial = 1
 
+
 class UploadCsvForm(forms.Form):
     csv_file = forms.FileField()

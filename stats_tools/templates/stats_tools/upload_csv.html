@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload CSV</title>
+</head>
+<body>
+{% extends 'stats_tools/base.html' %}
+{% block content %}
+<h1>Random Sample Form</h1>
+
+    <h2>Upload CSV</h2>
+    <form action="{% url 'stats_tools:upload_csv' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock content %}
+</body>
+</html>

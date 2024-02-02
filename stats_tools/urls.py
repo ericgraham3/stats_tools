@@ -8,4 +8,5 @@ urlpatterns = [
     # Home page
     path('', views.index, name='index'),
     path('random_sample/', views.random_sample, name='random_sample'),
+    path('upload_csv/', views.upload_csv, name='upload_csv')
 ]

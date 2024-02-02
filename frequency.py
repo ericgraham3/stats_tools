@@ -14,7 +14,7 @@ class Frequency:
         freq_table = pd.crosstab(self.df.iloc[:, 0], 'frequency')
 
         # count data points in dataset and take square root of that value to determine number of bins in histogram
-        n_data = len(data)
+        n_data = len(freq_table)
         n_bins = np.sqrt(n_data)
         n_bins = n_bins.astype(int)
 

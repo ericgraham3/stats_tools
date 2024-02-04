@@ -22,3 +22,5 @@ class RandomSampleForm(forms.ModelForm):
 
 class UploadCsvForm(forms.Form):
     csv_file = forms.FileField()
+    hist_options = forms.ChoiceField(choice=[('quantitative', 'Quantitative Histogram')], required=False)
+

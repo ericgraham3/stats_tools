@@ -12,7 +12,9 @@
     <h2>Upload CSV</h2>
     <form action="{% url 'stats_tools:upload_csv' %}" method="post">
         {% csrf_token %}
-        {{ form.as_div }}
+        {{ form.as_p }}
+        <label for="id_histogram_options">Select Histogram Type: </label>
+        {% form.histogram_options %}
         <button type="submit">Submit</button>
     </form>
 {% endblock content %}
